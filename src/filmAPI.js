@@ -36,4 +36,5 @@ function getMovieToSearch(query) {
     )
 
 }
-export default { filmAPI, getFilmById, getMovieCredits, getReviews, getMovieToSearch }
+const API = { filmAPI, getFilmById, getMovieCredits, getReviews, getMovieToSearch }
+export default API
