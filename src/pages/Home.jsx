@@ -1,4 +1,4 @@
-import MoviesList from 'components/MoviesList';
+import MoviesList from 'components/MoviesList/MoviesList';
 import API from 'filmAPI';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -17,4 +17,4 @@ export default function Home() {
   return <MoviesList films={films} />;
 }
 
-//   /trending/get-trending
+

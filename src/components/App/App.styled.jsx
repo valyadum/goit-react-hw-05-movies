@@ -1,18 +1,17 @@
 import styled from '@emotion/styled';
 
 
- export const Nav = styled.nav`
-  max-width: 960px;
-  mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%);
-  margin: 0 auto;
-  padding:0;
-  
+export const Nav = styled.nav`
+  background: linear-gradient(to right, #5367ff, #104d75);
+  box-shadow: 0px 3px 9px #09081b7a;
 `;
 export const Ul = styled.ul`
+margin: 0;
     text-align: center;
   background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
 `;
+
 
 export const Li = styled.li`
      display: inline-block;
@@ -22,6 +21,7 @@ export const Li = styled.li`
      color: rgba(0, 35, 122, 0.5);
      font-size: 18px;
      text-decoration: none;
+     cursor: pointer;
     /* display: block;  */
     & :hover{
         padding: 18px;

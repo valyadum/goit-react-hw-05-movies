@@ -3,6 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { BoardCard, CardActor, ImgCard, Name } from './Cast.styled';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -22,24 +23,30 @@ const Cast = () => {
       .catch(err => console.error(err));
   }, [movieId]);
   return (
-    <ul>
+    <BoardCard>
       {data.length &&
         data.map(({ character, name, profile_path,id }) => {
           return (
-            <li key={id}>
-              <img
-                src={profile_path? `https://image.tmdb.org/t/p/w200/${profile_path}`: defaultImg}
+            <CardActor key={id}>
+              <ImgCard
+                src={
+                  profile_path
+                    ? `https://image.tmdb.org/t/p/w200/${profile_path}`
+                    : defaultImg
+                }
                 alt={name}
                 width={250}
               />
-              <p>{name}</p>
-              <p>
-                Character: <span>{character}</span>
-              </p>
-            </li>
+              <div>
+                <Name>{name}</Name>
+                <Name>
+                  Character: <span>{character}</span>
+                </Name>
+              </div>
+            </CardActor>
           );
         })}
-    </ul>
+    </BoardCard>
   );
 };
 
