@@ -1,11 +1,12 @@
+import MoviesList from 'components/MoviesList';
 import API from 'filmAPI';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+
 
 export default function Home() {
   const [films, setFilms] = useState([]);
-  const location = useLocation();
+
 
   useEffect(() => {
     API.filmAPI()
@@ -13,20 +14,7 @@ export default function Home() {
       .catch(err => console.error(err));
   }, []);
 
-  return (
-    <ul>
-      {films &&
-        films.map(({ title, id }) => {
-          return (
-            <li key={id}>
-              <Link to={`movies/${id}`} state={{ from: location }}>
-                {title}
-              </Link>
-            </li>
-          );
-        })}
-    </ul>
-  );
+  return <MoviesList films={films} />;
 }
 
 //   /trending/get-trending

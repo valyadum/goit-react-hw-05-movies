@@ -1,14 +1,16 @@
+import MoviesList from 'components/MoviesList';
 import API from 'filmAPI';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import {  useSearchParams } from 'react-router-dom';
+
 
 export default function Movies() {
   const [search, setSearch] = useSearchParams('');
   const [query, setQuery] = useState(null);
   const [films, setFilms] = useState([]);
-  const location = useLocation();
+ 
   const query1 = search.get('query1');
 
   function onSearchMovie(event) {
@@ -44,18 +46,7 @@ export default function Movies() {
         <button type="submit">Search</button>
       </form>
 
-      <ul>
-        {films &&
-          films.map(({ title, id }) => {
-            return (
-              <li key={id}>
-                <Link to={`/movies/${id}`} state={{ from: location }}>
-                  {title}
-                </Link>
-              </li>
-            );
-          })}
-      </ul>
+     <MoviesList films={films}/>
       {/* //   (
       //   <p>The movie you are looking for was not found</p>
       // ) */}
