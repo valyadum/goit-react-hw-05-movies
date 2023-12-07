@@ -8,36 +8,34 @@ import { Form, Input, Search } from './Movies.styled';
 
 export default function Movies() {
   const [search, setSearch] = useSearchParams('');
-  const [query, setQuery] = useState(null);
   const [films, setFilms] = useState([]);
+  const query1 = search.get('query1'|| '');
 
-  const query1 = search.get('query1');
-
-  function onSearchMovie(event) {
-    event.preventDefault();
-    setQuery(query1);
-  }
   useEffect(() => {
-    if (!query) {
+    if (!query1) {
       return;
     }
-    API.getMovieToSearch(query)
+    API.getMovieToSearch(query1)
       .then(data => {
         setFilms(data.results);
       })
       .catch(err => console.error(err));
-  }, [query]);
+  }, [query1,search]);
   function updateSearch(event) {
-    if (event.target.value === '') {
+    event.preventDefault();
+     const search = event.target.search.value.trim().toLowerCase();
+    if (search === '') {
+      alert('Please, enter movie name')
       return setSearch({});
     }
-    setSearch({ query1: event.target.value });
+   
+    setSearch({ query1: search });
   }
 
   return (
     <>
-      <Form action="submit" onClick={onSearchMovie}>
-        <Input type="text" value={query1 ?? ''} onChange={updateSearch} />
+      <Form onSubmit={updateSearch}>
+        <Input type="text" name='search' />
         <Search type="submit">Search</Search>
       </Form>
 

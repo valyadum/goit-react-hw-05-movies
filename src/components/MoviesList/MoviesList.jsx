@@ -5,7 +5,6 @@ import {BoardFilm, BoxFilm, FilmName, Img } from './MoviesList.styled';
 
 export default function MoviesList({ films }) {
   const location = useLocation();
-  console.log(films);
    const defaultImg =
      'https://cannamazoo.com/assets/defaults/img/default-product-img.jpg';
   return (
